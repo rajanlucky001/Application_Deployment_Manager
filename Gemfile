@@ -18,9 +18,16 @@ group :assets do
   # gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
+
+  gem 'jquery-datatables-rails'
+  gem 'jquery-ui-rails'
 end
 
 gem 'jquery-rails'
+
+gem 'will_paginate'
+
+gem 'thin'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -36,3 +43,9 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+gem 'devise'
+
+gem 'cancan'
+
+gem 'rolify'

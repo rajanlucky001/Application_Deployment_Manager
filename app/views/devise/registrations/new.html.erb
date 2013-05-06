@@ -1,0 +1,40 @@
+<body>
+<div id="formDiv">
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+      <table width="360" border="0" cellspacing="0">
+        <tr>
+          <td width="151"><label ><h1>Sign Up</h1></label></td>
+        </tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+        <tr>
+          <td><%= f.label :email %></td>
+          <td><%= f.email_field :email, :autofocus => true %></td>
+        </tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+        <tr>
+          <td><%= f.label :password %></td>
+          <td><%= f.password_field :password %></td>
+        </tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+        <tr>
+          <td><%= f.label :password_confirmation %></td>
+          <td><%= f.password_field :password_confirmation %></td>
+        </tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+        <tr>
+          <td><%= f.submit "Sign up" %></td>
+        </tr>
+    <% end %>
+  <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+  <tr>
+    <td><a href="/users/sign_in">Sign in</a></td>
+    <td><a href="/users/password/new">Forgot your password?</a></td>
+  </tr>
+  </table>
+</div>
+<div id="logoDiv"><%= image_tag("logo.png", :alt => "ADM") %></div>
+<div id="footDiv">&copy;2013 ADM <a href="#"> Home</a>|| <a href="#">About Us</a> ||<a href="#"> Contact Us</a></div>
+</body>
+</html>
+
