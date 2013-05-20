@@ -1,0 +1,25 @@
+<h1>Devices</h1>
+
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="devices" width="100%" data-source="<%= devices_url(format: "json") %>">
+  <thead>
+  <tr>
+    <th>Sr. No.</th>
+    <th>Affiliate Name</th>
+    <th>Affiliate Location/Headend</th>
+    <th>Device Make/Model</th>
+    <th>IP Address</th>
+    <th>O/S Type</th>
+    <th>O/S Version</th>
+    <th>Base Image Version</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+<tbody>
+
+</tbody>
+</table>
+
+<br />
+
+<%= button_to 'New Device', new_device_path, :method => :get%>
+<%=  button_to 'Import Device', '/devices/upload', :method => :get %>

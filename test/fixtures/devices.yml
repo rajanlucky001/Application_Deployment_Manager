@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  affiliate: MyString
+  headend: MyString
+  deviceModel: MyString
+  ipAddress: MyString
+  osType: MyString
+  osVersion: MyString
+  biv: MyString
+
+two:
+  affiliate: MyString
+  headend: MyString
+  deviceModel: MyString
+  ipAddress: MyString
+  osType: MyString
+  osVersion: MyString
+  biv: MyString

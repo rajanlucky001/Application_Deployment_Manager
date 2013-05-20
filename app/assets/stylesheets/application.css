@@ -10,7 +10,15 @@
 */
 label{
     color:#FF3300;
-    font-weight:bold;
+    font-weight: bold;
+    font-size: 15px;
+    font-family: "MS Serif", "New York", serif;
+}
+h1{
+    font-weight: normal;
+    color:#FF3300;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 60px;
 }
 #formDiv {
     position: absolute;
@@ -34,4 +42,32 @@ label{
     width: 341px;
     height: 29px;
     z-index: 3;
+}
+
+#config_table{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 12px;
+    width: 600px;
+    text-align: center;
+    border-collapse: collapse;
+    border-top: 7px solid #000000;
+    border-bottom: 7px solid #000000;
+    margin: 20px;
+}
+#config_table td {
+    background: rgb(255, 255, 255);
+    padding: 8px;
+}
+#config_table thead {
+    border: 7px solid #000000;
+    padding: 8px;
+}
+
+#config_table tbody {
+    border: 7px solid #000000;
+    padding: 8px;
+}
+
+#config_table tr {
+    border: 1px dashed #000000;
 }

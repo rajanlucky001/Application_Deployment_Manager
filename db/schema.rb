@@ -11,11 +11,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130506185447) do
+ActiveRecord::Schema.define(:version => 20130512064717) do
 
   create_table "applications", :force => true do |t|
     t.string   "name"
     t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "configurations", :force => true do |t|
+    t.string   "key"
+    t.string   "value"
+    t.integer  "version_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "configurations", ["version_id"], :name => "index_configurations_on_version_id"
+
+  create_table "devices", :force => true do |t|
+    t.string   "affiliate"
+    t.string   "headend"
+    t.string   "deviceModel"
+    t.string   "ipAddress"
+    t.string   "osType"
+    t.string   "osVersion"
+    t.string   "biv"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -30,6 +52,11 @@ ActiveRecord::Schema.define(:version => 20130506185447) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "upload_files", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -55,6 +82,16 @@ ActiveRecord::Schema.define(:version => 20130506185447) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
+
+  create_table "version_configurations", :force => true do |t|
+    t.string   "key"
+    t.string   "value"
+    t.integer  "version_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "version_configurations", ["version_id"], :name => "index_version_configurations_on_version_id"
 
   create_table "versions", :force => true do |t|
     t.string   "version"

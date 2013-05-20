@@ -1,0 +1,46 @@
+<%= form_for(@device) do |f| %>
+  <% if @device.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@device.errors.count, "error") %> prohibited this device from being saved:</h2>
+
+      <ul>
+      <% @device.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <table width="360" border="0" cellspacing="0">
+      <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td><label for="device_affiliate">Affiliate Name</label></td>
+        <td><%= f.text_field :affiliate %></td>
+      </tr>
+      <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td><label for="device_headend">Affiliate Location/Headend</label></td>
+      <td><%= f.text_field :headend %></td>
+      </tr>
+      <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td><label for="device_deviceModel">Device Make/Model</label></td>
+      <td><%= f.text_field :deviceModel %></td>
+      </tr>
+      <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td><label for="device_ipAddress">IP Address</label></td>
+      <td><%= f.text_field :ipAddress %></td>
+      </tr>
+      <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td><label for="device_osType">O.S. Type</label></td>
+      <td><%= f.text_field :osType %></td>
+      </tr>
+      <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td><label for="device_osVersion">O.S. Version</label></td>
+      <td><%= f.text_field :osVersion %></td>
+      </tr>
+      <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td><label for="device_biv">Base Image Version</label></td>
+      <td><%= f.text_field :biv %></td>
+      </tr>
+      <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+      <tr><td><%= f.submit %></td>
+       </table>
+<% end %>

@@ -23,10 +23,9 @@ class ApplicationsDatatable
           h(application.description),
           h(application.created_at),
           h(application.updated_at),
-          link_to('Show',application)+link_to('Modify', controller: :applications, action: :edit, id: application)+
-          link_to('Destroy', application, confirm: 'Are you sure?', method: :delete)+
-          link_to('Manage version')
-
+          link_to('Show',application)+link_to('Modify', controller: :applications, action: :edit, id: application)+' | '+
+          link_to('Destroy', application, confirm: 'Are you sure?', method: :delete)+' | '+
+          link_to('Manage version', controller: :versions, action: :index, id: application)
       ]
     end
   end

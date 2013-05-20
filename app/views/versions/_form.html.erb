@@ -19,7 +19,22 @@
     <%= f.label :application %><br />
     <%= f.text_field :application %>
   </div>
-  <div class="actions">
+
+    <div>
+      <img src="/assets/add.png" onclick="add_new_txt_boxes();" class="add" width="24" height="24"/>
+      <input type="hidden" id ="param_count" name="version[param_count]" value="1"/>
+    </div>
+      <table id="tbl">
+        <tbody id="text_boxes">
+        <tr>
+          <td><input type="text" id="prop1" name="version[key1]" size="50"/></td>
+          <td><input type="text" id="value1'" name="version[value1]" size="50"/></td>
+          <td></td>
+        </tr>
+        </tbody>
+      </table>
+
+    <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>

@@ -1,15 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Version:</b>
-  <%= @version.version %>
-</p>
+<h1><%= @application.name %> <%= @version.version %></h1><br/>
+<h1 style="font-size: 40px;  ">Configuration Data</h1><br/>
 
-<p>
-  <b>Application:</b>
-  <%= @version.application %>
-</p>
+<table id="config_table">
+  <thead>
+  <tr>
+    <td style="font-size: 20px;font: bolder; color: #FF3300 ">Key</td>
+    <td style="font-size: 20px;font: bolder;color: #FF3300 " >Value</td>
+  </tr>
+  </thead>
+  <tbody>
+  <% @versionconfig.each do |config| %>
+      <tr>
+        <td><label><%= config.key %></label></td>
+        <td><%= config.value %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
 
 
 <%= link_to 'Edit', edit_version_path(@version) %> |
-<%= link_to 'Back', versions_path %>
+<%= link_to 'Back', controller: :versions, action: :index, id: session[:app_id] %>

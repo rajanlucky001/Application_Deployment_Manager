@@ -1,5 +1,12 @@
 ApplicationDeploymentManager::Application.routes.draw do
 
+  resources :devices do
+    collection do
+      get :show_upload
+      post :upload
+    end
+  end
+
   resources :versions
 
   resources :applications

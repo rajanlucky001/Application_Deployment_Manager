@@ -9,7 +9,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<p class="notice"><%= notice %></p>
+<% if user_signed_in? %>
+    <table width=100% height="31" cellspacing="0" class="bar">
+      <tr>
+        <td onclick="document.location='/'">Home</td>
+        <td onclick="document.location='/applications'">Applications</td>
+        <td onclick="document.location='/devices'">Devices</td>
+        <td>Deployments</td>
+        <td>Profiles</td>
+        <td>Reports</td>
+      </tr>
+    </table>
+<% end %>
+    <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 <div id="user_nav">
   <% if user_signed_in? %>
@@ -21,6 +33,6 @@
   <% end %>
 </div>
 <%= yield %>
-
+<div id="footDiv">&copy;2013 ADM <a href="#"> Home</a>|| <a href="#">About Us</a> ||<a href="#"> Contact Us</a></div>
 </body>
 </html>

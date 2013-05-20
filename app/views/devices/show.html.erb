@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Affiliate:</b>
+  <%= @device.affiliate %>
+</p>
+
+<p>
+  <b>Headend:</b>
+  <%= @device.headend %>
+</p>
+
+<p>
+  <b>Devicemodel:</b>
+  <%= @device.deviceModel %>
+</p>
+
+<p>
+  <b>Ipaddress:</b>
+  <%= @device.ipAddress %>
+</p>
+
+<p>
+  <b>Ostype:</b>
+  <%= @device.osType %>
+</p>
+
+<p>
+  <b>Osversion:</b>
+  <%= @device.osVersion %>
+</p>
+
+<p>
+  <b>Biv:</b>
+  <%= @device.biv %>
+</p>
+
+
+<%= link_to 'Edit', edit_device_path(@device) %> |
+<%= link_to 'Back', devices_path %>

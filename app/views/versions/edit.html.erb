@@ -1,6 +1,42 @@
 <h1>Editing version</h1>
 
-<%= render 'form' %>
+<%= form_for(@version) do |f| %>
+    <% if @version.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@version.errors.count, "error") %> prohibited this version from being saved:</h2>
+
+          <ul>
+            <% @version.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div>
+      <img src="/assets/add.png" onclick="add_new_txt_boxes();" class="add" width="24" height="24"/>
+      <input type="hidden" id ="param_count" name="param_count" value="1"/>
+    </div>
+    <table id="tbl">
+      <tbody id="text_boxes">
+      <% i = 0 %>
+      <% @versionconfig.each do |config| %>
+          <% i = i+1 %>
+          <tr>
+            <td><input type="text" id="prop<%= i %>" name="version[key<%= i %>]" size="50" value="<%= config.key %>"/></td>
+            <td><input type="text" id="value<%= i %>" name="version[value<%= i %>]" size="50" value="<%= config.value %>"/></td>
+            <td><img src="/assets/remove.png" onclick="removeRow(this);" class="remove" width="24" height="24"/></td>
+          </tr>
+      <% end %>
+      <input type="hidden" id ="count" name="count" value="<%= i %>"/>
+      </tbody>
+    </table>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
+
 
 <%= link_to 'Show', @version %> |
 <%= link_to 'Back', versions_path %>

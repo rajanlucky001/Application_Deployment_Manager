@@ -10,16 +10,18 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <table width="360" border="0" cellspacing="0">
+  <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+  <tr><td><%= f.label :name %></td>
+    <td><%= f.text_field :name %></td>
+  </tr>
+  <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td><%= f.label :description %></td>
+    <td><%= f.text_area :description, :size => "24x4" %></td>
+  </tr>
+  <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+  <tr><td><%= f.submit "Go"%></td>
+  </tr>
+  <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+  </table>
 <% end %>

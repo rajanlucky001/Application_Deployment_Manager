@@ -20,6 +20,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 
   gem 'jquery-datatables-rails'
+
   gem 'jquery-ui-rails'
 end
 
@@ -49,3 +50,4 @@ gem 'devise'
 gem 'cancan'
 
 gem 'rolify'
+gem 'debugger'
