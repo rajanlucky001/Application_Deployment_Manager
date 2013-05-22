@@ -1,6 +1,6 @@
 <h1>Editing version</h1>
 
-<%= form_for(@version) do |f| %>
+<%= form_for([@application, @version]) do |f| %>
     <% if @version.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@version.errors.count, "error") %> prohibited this version from being saved:</h2>
@@ -37,6 +37,6 @@
     </div>
 <% end %>
 
-
-<%= link_to 'Show', @version %> |
-<%= link_to 'Back', versions_path %>
+<br/>
+<%= button_to 'Show',[@application, @version], method: :get %> <br/>
+<%= button_to 'Back', :back, method: :get %>

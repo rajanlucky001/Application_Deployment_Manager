@@ -1,7 +1,7 @@
 <h1>New version</h1>
 
 
-<%= form_for(@version) do |f| %>
+<%= form_for([@application, @version]) do |f| %>
     <% if @version.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@version.errors.count, "error") %> prohibited this version from being saved:</h2>
@@ -16,7 +16,7 @@
 
     <div class="field">
       <%= f.label :application %><br />
-      <input disabled="disabled" id="version_application" name="version[application]" size="30" type="text" value=<%= session[:app_id] %> />
+      <input disabled="disabled" id="version_application" name="version[application]" size="30" type="text" value=<%= params[:application_id] %> />
     </div>
 
     <div class="field">
@@ -43,5 +43,5 @@
     </div>
 <% end %>
 
-
-<%= link_to 'Back', versions_path %>
+<br/>
+<%= button_to 'Back', application_versions_path(@application) %>

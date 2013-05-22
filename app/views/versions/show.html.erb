@@ -20,6 +20,6 @@
   </tbody>
 </table>
 
-
-<%= link_to 'Edit', edit_version_path(@version) %> |
-<%= link_to 'Back', controller: :versions, action: :index, id: session[:app_id] %>
+<br/>
+<%= button_to 'Edit', edit_application_version_path(@application, @version), method: :get %> <br/>
+<%= button_to 'Back', :back, method: :get %>

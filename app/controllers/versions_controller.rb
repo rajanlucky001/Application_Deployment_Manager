@@ -1,12 +1,9 @@
 class VersionsController < ApplicationController
+  before_filter :setup
   # GET /versions
   # GET /versions.json
   def index
-    if(session[:app_id].to_i<=0 || session[:app_id]!=params[:id])
-          session[:app_id] = params[:id]
-    end
-    #@application = Application.find(session[:app_id])
-    #@versions = @application.versions.where(['application_id=?', params[:id]])
+    @versions = @application.versions.all
     respond_to do |format|
       format.html
       format.json { render json: VersionsDatatable.new(view_context) }
@@ -16,9 +13,8 @@ class VersionsController < ApplicationController
   # GET /versions/1
   # GET /versions/1.json
   def show
-    @application = Application.find(session[:app_id])
     @version = Version.find(params[:id])
-    @versionconfig= VersionConfiguration.where(['version_id=?', @version.id])
+    @versionconfig= @version.version_configurations.all
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @version }
@@ -38,18 +34,15 @@ class VersionsController < ApplicationController
 
   # GET /versions/1/edit
   def edit
-    @versionconfig= VersionConfiguration.where(['version_id=?', params[:id]])
-    @version = Version.find(params[:id])
+    @version = @application.versions.find(params[:id])
+    @versionconfig= @version.version_configurations.all
   end
 
   # POST /versions
   # POST /versions.json
   def create
-    application_id = session[:app_id].to_i
-
     count = params[:version]['param_count'].to_i
-
-    @version = Version.new({version: params[:version]['version'], application_id: application_id})
+    @version = Version.new({version: params[:version]['version'], application_id: params[:application_id]})
     @version.save!
     version_id = @version.id
     i=1
@@ -61,7 +54,7 @@ class VersionsController < ApplicationController
 
     respond_to do |format|
       if @version.save
-        format.html { redirect_to @version, notice: 'Version was successfully created.' }
+        format.html { redirect_to [@application, @version], notice: 'Version was successfully created.' }
         format.json { render json: @version, status: :created, location: @version }
       else
         format.html { render action: "new" }
@@ -73,17 +66,15 @@ class VersionsController < ApplicationController
   # PUT /versions/1
   # PUT /versions/1.json
   def update
-    @version = Version.find(params[:id])
-    @version
+    @version = @application.versions.find(params[:id])
     count = params['param_count'].to_i
-    version_id = params[:id]
     i=1
     saved=false
     error =""
     @version.version_configurations.destroy_all
     begin
       while(i<=count)
-        @configuration = VersionConfiguration.new({key: params[:version]['key'+i.to_s], value: params[:version]['value'+i.to_s], version_id: version_id})
+        @configuration = VersionConfiguration.new({key: params[:version]['key'+i.to_s], value: params[:version]['value'+i.to_s], version_id: params[:id]})
         saved = @configuration.save!
         i=i+1
       end
@@ -95,7 +86,7 @@ class VersionsController < ApplicationController
 
     respond_to do |format|
       if saved
-        format.html { redirect_to @version, notice: 'Version was successfully updated.' }
+        format.html { redirect_to [@application, @version], notice: 'Version was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -109,11 +100,16 @@ class VersionsController < ApplicationController
   # DELETE /versions/1.json
   def destroy
     @version = Version.find(params[:id])
+    @versionconfig = @version.version_configurations.destroy_all
     @version.destroy
 
     respond_to do |format|
-      format.html { redirect_to versions_url }
+      format.html { redirect_to [@application, @version] }
       format.json { head :no_content }
     end
+  end
+
+  def setup
+    @application = Application.find(params[:application_id])
   end
 end
